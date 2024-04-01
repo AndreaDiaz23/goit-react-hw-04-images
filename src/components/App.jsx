@@ -17,12 +17,12 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import Searchbar from './searchbar/Searchbar.jsx';
-import ImageGallery from './imageGallery/ImageGallery.jsx';
-import ImageGalleryItem from './imageGalleryItem/ImageGalleryItem.jsx';
-import Button from './button/Button.jsx';
-import Loader from './loader/Loader.jsx';
-import Modal from './modal/Modal.jsx';
+import Searchbar from './Searchbar/Searchbar';
+import ImageGallery from './ImageGallery/ImageGallery.jsx';
+import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem.jsx';
+import Button from './Button/Button.jsx';
+import Loader from './Loader/Loader.jsx';
+import Modal from './Modal/Modal.jsx';
 import Styles from './app.module.css';
 
 const App = () => {
