@@ -42,7 +42,7 @@ const App = () => {
   const fetchImages = () => {
     const apiKey = '40998850-21238c0a5b68611eff0d55619';
     const url = `https://pixabay.com/api/?q=${query}&page=${page}&key=${apiKey}&image_type=photo&orientation=horizontal&per_page=12`;
-
+  
     setLoading(true);
 
     axios
