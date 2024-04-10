@@ -9,7 +9,7 @@ import Loader from './Loader/Loader.jsx';
 import Modal from './Modal/Modal.jsx';
 /* import Styles from './app.module.css';
  */
-import { fetchImages } from '../api/fetchimages.js'; 
+import { fetchImages } from './api.js'; 
 
 const App = () => {
   const [images, setImages] = useState([]);
