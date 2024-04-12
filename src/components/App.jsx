@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import Searchbar from './searchbar/Searchbar.jsx';
-import ImageGallery from './imageGallery/ImageGallery.jsx';
-import ImageGalleryItem from './imageGalleryItem/ImageGalleryItem.jsx';
-import Button from './button/Button.jsx';
-import Loader from './loader/Loader.jsx';
-import Modal from './modal/Modal.jsx';
+import Searchbar from './Searchbar/Searchbar.jsx';
+import ImageGallery from './ImageGallery/ImageGallery.jsx';
+import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem.jsx';
+import Button from './Button/Button.jsx';
+import Loader from './Loader/Loader.jsx';
+import Modal from './Modal/Modal.jsx';
 import Styles from './app.module.css';
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
   const [largeImageURL, setLargeImageURL] = useState('');
   const queryRef = useRef('');
 
-  const handleSubmit = (query) => {
+  const handleSubmit = query => {
     queryRef.current = query;
     setImages([]);
     setPage(1);
@@ -31,11 +31,11 @@ const App = () => {
 
     axios
       .get(url)
-      .then((response) => {
-        setImages((prevImages) => [...prevImages, ...response.data.hits]);
-        setPage((prevPage) => prevPage + 1);
+      .then(response => {
+        setImages(prevImages => [...prevImages, ...response.data.hits]);
+        setPage(prevPage => prevPage + 1);
       })
-      .catch((error) => console.error('Error fetching images:', error))
+      .catch(error => console.error('Error fetching images:', error))
       .finally(() => {
         setLoading(false);
       });
@@ -49,7 +49,7 @@ const App = () => {
     });
   };
 
-  const handleImageClick = (largeImageURL) => {
+  const handleImageClick = largeImageURL => {
     setShowModal(true);
     setLargeImageURL(largeImageURL);
   };
@@ -63,7 +63,7 @@ const App = () => {
     <div className={Styles.App}>
       <Searchbar onSubmit={handleSubmit} />
       <ImageGallery>
-        {images.map((image) => (
+        {images.map(image => (
           <ImageGalleryItem
             key={image.id}
             src={image.webformatURL}
@@ -75,7 +75,9 @@ const App = () => {
       <div className={Styles.Button_container}>
         {loading && <Loader />}
         {images.length > 0 && !loading && <Button onClick={handleLoadMore} />}
-        {showModal && <Modal onClose={handleCloseModal} largeImageURL={largeImageURL} />}
+        {showModal && (
+          <Modal onClose={handleCloseModal} largeImageURL={largeImageURL} />
+        )}
       </div>
     </div>
   );
